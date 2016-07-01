@@ -1,0 +1,67 @@
+<!-- FooTable Plugin CSS -->
+<link rel="stylesheet" type="text/css" href="vendor/plugins/footable/css/footable.core.min.css">
+
+<!-- FooTable Plugin -->
+<script src="vendor/plugins/footable/js/footable.all.min.js"></script>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <!-- Panel with: Expanding Rows -->
+        <div class="panel" id="spy4">
+            <div class="panel-heading">
+                <span class="panel-title">
+                <span class="fa fa-arrows-v"></span>Task details</span>
+            </div>
+            <div class="panel-body pn">
+
+                <table class="table footable fw-labels" data-page-size="20">
+                    <thead>
+                        <tr>
+                            <th width="10%">
+                                Status
+                            </th>
+                            <th width="15%">
+                                Project
+                            </th>
+                            <th width="10%">
+                                Due date
+                            </th>
+                            <th data-toggle="true" width="75%">
+                                Title
+                            </th>
+                            <th data-hide="all">
+                                Description
+                            </th>
+                            <th data-hide="all">
+                                Dates
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <!-- Primary Row -->
+                        <tr ng-class="{ 'row-success': task.done, 'row-warning': !task.done }" ng-repeat="task in getAllTasks()" init-footable>
+                            <td ng-switch="task.status">
+                                <span class="label label-primary" ng-switch-when="1">Open</span>
+                                <span class="label label-warning" ng-switch-when="2">In progress</span>
+                                <span class="label label-success" ng-switch-when="3">Finished</span>
+                            </td>
+                            <td>
+                                <b class="text-primary" get-project-title id="{{ task.project_id }}"></b>
+                            </td>
+                            <td>
+                                <span ng-if="task.dates" class="label label-info">{{ task.dates.endDate | fromNow }}</span>
+                            </td>
+                            <td>{{ task.title }}</td>
+                            <td>{{ task.description }}</td>
+                            <td>{{ task.dates.startDate | date:'dd/MM/yyyy' }} - {{ task.dates.endDate | date:'dd/MM/yyyy' }}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

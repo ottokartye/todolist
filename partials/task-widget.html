@@ -1,0 +1,55 @@
+<!-- Task Widget -->
+<div class="bs-component">
+    <div class="panel panel-widget task-widget task-alt">
+        <div class="panel-heading cursor">
+            <span class="panel-icon"><i class="fa fa-cog"></i></span>
+            <span class="panel-title"> Task-List Widget</span>
+            <div class="widget-menu pull-right mr10">
+                <button type="button" class="btn btn-sm btn-primary" ng-click="openTaskWizard()">Add task</button>
+            </div>
+        </div>
+        <div class="panel-body p15">
+            <!-- Open tasks -->
+            <h5 class="mtn mb15"><i class="fa fa-circle-o text-danger pr5"></i> Open</h5>
+            <ul class="task-list task-current">
+                <li class="task-item danger" ng-repeat="task in getTasksByStatus(1)">
+                    <div class="task-handle"><span class="fa fa-play" style="cursor:pointer" ng-click="startTask(task.id)"></span></div>
+                    <div class="task-desc" ng-class="{ 'text-muted': task.done }" ng-if="task.title" ng-click="openTaskWizard(task.id)" style="cursor:pointer">{{task.title}}<span ng-if="task.dates" class="pull-right text-danger">due {{ task.dates.endDate | fromNow }}</span></div>
+                    <div class="task-menu"></div>
+                </li>
+
+            </ul>
+
+            <!-- In progress tasks -->
+            <h5 class="mtn mt15 mb15"><i class="fa fa-cog text-warning pr5"></i> In progress</h5>
+            <ul class="task-list task-current">
+                <li class="task-item warning" ng-repeat="task in getTasksByStatus(2)">
+                    <div class="task-handle">
+                        <div class="checkbox-custom">
+                            <input type="checkbox" id="task{{task.id}}" check-task>
+                            <label for="task{{task.id}}"></label>
+                        </div>
+                    </div>
+                    <div class="task-desc" ng-class="{ 'text-muted': task.done }" ng-if="task.title">{{task.title}}<span ng-if="task.dates" class="pull-right text-danger">due {{ task.dates.endDate | fromNow }}</span></div>
+                    <div class="task-menu"></div>
+                </li>
+
+            </ul>
+
+            <!-- Finished tasks -->
+            <h5 class="mt15 mb15"><i class="fa fa-check-square-o text-success pr5"></i> Finished </h5>
+            <ul class="task-list task-current">
+                <li class="task-item success" ng-repeat="task in getTasksByStatus(3)">
+                    <div class="task-handle">
+                        <div class="checkbox-custom">
+                            <input type="checkbox" id="task{{task.id}}" check-task>
+                            <label for="task{{task.id}}"></label>
+                        </div>
+                    </div>
+                    <div class="task-desc" ng-class="{ 'text-muted': task.done }" ng-if="task.title">{{task.title}}<span ng-if="task.dates" class="pull-right text-success">{{ task.dates.finishedDate | fromNow }}</div>
+                <div class="task-menu"></div>
+            </li>
+
+        </ul>
+    </div>
+</div>

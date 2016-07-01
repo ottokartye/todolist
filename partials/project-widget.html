@@ -1,0 +1,57 @@
+<div class="bs-component">
+    <div class="panel">
+        <div class="panel-heading">
+            <span class="panel-icon"><i class="fa fa-area-chart"></i></span>
+            <span class="panel-title">Project overview</span>
+            <div class="widget-menu pull-right mr10">
+                <button type="button" class="btn btn-sm btn-primary">Add project</button>
+            </div>
+        </div>
+
+        <div class="panel-body p5">
+            <div class="table-responsive">
+                <div class="bs-component">
+                    <table class="table mbn table-striped admin-form theme-info">
+                        <thead>
+                            <tr class="hiden">
+                                <th class="hidden-xs" width="20%">Project</th>
+                                <th class="hidden-xs" width="15%">Type</th>
+                                <th class="hidden-xs" width="30%">Not started</th>
+                                <th class="w175"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr ng-repeat="project in projects">
+                                <td class="hidden-xs">{{ project.title }}</td>
+                                <td class="hidden-xs">{{ getProjectTypeDescription(project.project_type_id) }}</td>
+                                <td class="hidden-xs">
+                                    <span class="label label-primary">{{ getTasksByStatusAndProjectId(1, project.id).length }}</span>
+                                    <span class="text-default" ng-if="getOpenTasksCount(project.id) == 1"> task</span>
+                                    <span class="text-default" ng-if="getOpenTasksCount(project.id) != 1"> tasks</span>
+                                </td>
+                                <td class="text-right">
+                                    <!--
+                                    <div class="progress progress-bar-md mn">
+                                        <div class="progress-bar progress-bar-info progress-bar" style="width: {{ getTasksCompletionPercentage(project.id) }}%">{{ getTasksCompletionPercentage(project.id) | number:0 }} %</div>
+                                    </div>
+-->
+                                    <div class="progress mt10 mbn">
+                                        <div class="progress-bar progress-bar-success" style="width: {{ getTasksCompletionPercentage(3, project.id) }}%">{{ getTasksCompletionPercentage(3, project.id) | number:0 }}% Complete</div>
+                                        <div class="progress-bar progress-bar-warning" style="width: {{ getTasksCompletionPercentage(2, project.id) }}%">{{ getTasksCompletionPercentage(2, project.id) | number: 0 }}% In progress</div>
+<!--
+                                        <div class="progress-bar progress-bar-alert" style="width: 27%">
+                                            <span class="sr-only">10% Complete (danger)</span>
+                                        </div>
+-->
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html ng-app="todoList">
+
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="keywords" content="HTML5 Bootstrap 3 Admin Template UI Theme" />
+    <meta name="description" content="AbsoluteAdmin - A Responsive HTML5 Admin UI Framework">
+    <meta name="author" content="AbsoluteAdmin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font CSS (Via CDN) -->
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
+
+    <!-- Fullcalendar -->
+    <link rel="stylesheet" type="text/css" href="vendor/plugins/fullcalendar/fullcalendar.min.css" media="screen">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+
+    <!-- Admin Forms CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+
+    <!-- DateRange Plugin -->
+    <link rel="stylesheet" type="text/css" href="vendor/plugins/daterange/daterangepicker.css">
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body class="calendar-page" ng-controller="TodoListController" id="body">
+
+    <ng-include src="'partials/task-edit-wizard.html'" ng-if="newTask" onload="openWizard()"></ng-include>
+<!--    <ng-include src="'partials/task-details-wizard.html'" ng-if="currentTask" onload="openWizard()"></ng-include>-->
+
+    <!-- Start: Main -->
+    <div id="main">
+
+        <!-- Start: Header -->
+        <ng-include src="'partials/header.html'"></ng-include>
+        <!-- End: Header -->
+
+        <!-- Start: Sidebar -->
+        <ng-include src="'partials/aside-left.html'"></ng-include>
+        <!-- End: Sidebar -->
+
+        <!-- Start: Content-Wrapper -->
+        <section id="content_wrapper">
+
+            <!-- Start: Topbar -->
+            <ng-include src="'partials/header-topbar.html'"></ng-include>
+            <!-- End: Topbar -->
+
+            <!-- Begin: Content -->
+            <div id="content" class="table-layout animated fadeIn" ng-view></div>
+            <!-- End: Content -->
+
+        </section>
+        <!-- End: Content-Wrapper -->
+
+        <!-- Start: Right Sidebar -->
+        <ng-include src="'partials/aside-right.html'" run-script scriptid="core" run="Core.init()"></ng-include>
+        <!-- End: Right Sidebar -->
+
+    </div>
+    <!-- End: Main -->
+
+    <style>
+        /*demo styles*/
+        
+        #alert-demo-1,
+        #alert-demo-2 {
+            display: none;
+        }
+
+    </style>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery-1.11.1.min.js"></script>
+    <script src="vendor/jquery/jquery_ui/jquery-ui.min.js"></script>
+    <script src="vendor/plugins/moment/moment.min.js"></script>
+
+    <!-- DateRange plugin -->
+    <script src="vendor/plugins/daterange/daterangepicker.min.js"></script>
+
+    <!-- Theme Javascript -->
+    <script src="assets/js/utility/utility.js"></script>
+    <script src="assets/js/demo/demo.js"></script>
+    <script src="assets/js/main.js"></script>
+    
+    <!-- Application files -->
+    <script src="js/angularjs.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/angular-local-storage.min.js"></script>
+    <script src="js/angular-daterangepicker.js"></script>
+    <script src="js/angular-timeAgo.js"></script>
+    <script src="js/angular-calendar.js"></script>
+    <script src="app/application.js"></script>
+    <script src="app/routing.js"></script>
+    <script src="app/controllers/TodoListController.js"></script>
+    <script src="app/factories/LocalStorageFactory.js"></script>
+    <script src="app/factories/CalendarFactory.js"></script>
+    <script src="app/factories/TaskFactory.js"></script>
+    <script src="app/directives.js"></script>
+    <script src="app/filters.js"></script>
+    <script src="app/model.js"></script>
+</body>
+
+</html>

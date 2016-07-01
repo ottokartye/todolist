@@ -1,0 +1,26 @@
+<!-- Task Widget -->
+<div class="panel panel-widget task-widget task-alt" id="p05">
+    <div class="panel-heading cursor">
+        <span class="panel-icon">
+                      <i class="fa fa-cog"></i>
+                    </span>
+        <span class="panel-title"> Task-List Widget</span>
+    </div>
+    <div class="panel-body p15">
+        <h5 class="mtn mb10"><i class="fa fa-bell text-warning pr5"></i> Personal Tasks</h5>
+        <ul class="task-list task-current">
+            <li class="task-item " ng-class="{ 'primary': task.done, 'danger': !task.done }" ng-repeat="task in tasks">
+                <div class="task-handle">
+                    <div class="checkbox-custom">
+                        <input type="checkbox" id="task{{task.id}}" check-task>
+                        <label for="task{{task.id}}"></label>
+                    </div>
+                </div>
+                <div class="task-desc" ng-class="{ 'text-muted': task.done }" ng-if="task.title">{{task.title}}<span class="fa fa-info pull-right"></span></div>
+                <div class="task-menu"></div>
+            </li>
+            
+        </ul>
+    </div>
+
+</div>

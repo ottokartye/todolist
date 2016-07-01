@@ -1,0 +1,7 @@
+{
+    "jscodehints.detectedExclusions": [
+        "CodeMirror.js",
+        "pnotify.js",
+        "spin.js"
+    ]
+}
